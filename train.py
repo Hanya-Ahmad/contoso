@@ -44,7 +44,8 @@ x=df.drop(['heart_disease'], axis=1)
 y=df.heart_disease
 
 train_x, val_x, train_y, val_y = train_test_split(x, y,test_size=0.3,random_state = 0)
-model = RandomForestClassifier(random_state = 0)
+model = RandomForestClassifier(random_state = 0, max_depth=6, criterion ='entropy',
+                                 n_estimators=150)
 
 model.fit(train_x, train_y)
 
