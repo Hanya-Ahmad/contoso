@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <title>Heart Failure Prediction Model</title>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <style>
+      html, body {
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 15px;
+      }
+      form {
+        border: 2px solid #000000;
+        width: 75%;
+        margin: 2rem auto;
+        border-radius: 10px;
+      }
+      input[type=text], input[type=number] {
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      /* .flex-container{
+        display: flex;
+        flex-direction: column;
+       justify-content: space-between;
+       align-items: center;
+       width:auto;
+    
+      } */
+      .icon {
+      font-size: 110px;
+      display: flex;
+      justify-content: center;
+      color: #094ebe;
+      }
+      input:focus{
+        border: #000000 solid 2px;
+        outline: none !important;
+      }
+      button {
+      background-color: #4286f4;
+      /* background-color: #04AA6D; */
+      border-radius: 10px;
+      color: white;
+      padding: 14px 0;
+      margin: 10px 0;
+      border: none;
+      cursor: pointer;
+      width: 30%;
+      }
+      h1 {
+         text-align: center;
+      }
+      button:hover {
+      opacity: 0.8;
+      }
+      .formcontainer {
+      text-align: center;
+      margin: 24px 50px 12px;
+      }
+      .container {
+      padding: 16px 0;
+      text-align:left;
+      width: 100%;
+       height: auto;
+      }
+      span.psw {
+      float: right;
+      padding-top: 0;
+      padding-right: 15px;
+      }
+    .numbers{
+       width:30%;
+       text-align: justify;
+
+    }
+      /* Change styles for span on extra small screens */
+      @media screen and (max-width: 300px) {
+      span.psw {
+      display: block;
+      float: none;
+      }
+   }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+    <form action="/output" id="form1" class="WebContainer" method = "POST">
+      <h1 style="font-family:Roboto">Enter the patient's data</h1>
+      <!-- <div class="icon">
+        <i class="fas fa-user-circle"></i>
+      </div> -->
+      <div class="formcontainer">
+      <div class="numbers" >
+        <label for="age"><strong>Age</strong></label> <br>
+        <input type="number" id="age" min="1" max="100" placeholder="Enter your age" name="age" required >
+      </div>
+        <div class="container" >
+          <label for="gender"> <strong>Gender</strong></label> <br>
+          <input type="radio" id="male" name="gender" value="male" required> Male<br>
+          <input type="radio" id="female "name="gender" value="female"> Female
+      </div>
+  
+      <div class="container" >
+        <label for="chestpain"> <strong>Chest Pain Type</strong></label> <br>
+        <input type="radio" id="ta" name="chestpain" value="ta" required> TA<br>
+        <input type="radio" id="ata" name="chestpain" value="ata"> ATA <br>
+        <input type="radio" id="nap" name="chestpain" value="nap"> NAP <br>
+        <input type="radio" id="asy" name="chestpain" value="asy"> ASY <br>
+    </div>
+    
+      <div class="numbers">
+        <label for="restingbp"><strong>Resting Blood Pressure</strong></label><br>
+        <input type="number" id="restingbp" min="0" max="200" placeholder="in mmHg" name="restingbp" required> <br>
+        <label for="cholesterol"><strong>Cholesterol</strong></label> <br>
+        <input type="number" id="cholesterol" min="0" max="610" placeholder="in mg/dL" name="cholesterol" required> <br>
+        <label for="fastingbs"><strong>Fasting Blood Sugar</strong></label> <br>
+        <input type="number" id="fastingbs" min="0" max="300" placeholder="in mg/dL"  name="fastingbs" required > <br>
+      </div>
+
+        <div class="container" >
+          <label for="restingecg"> <strong>Resting ECG</strong></label> <br>
+          <input type="radio" id="normal" name="restingecg" value="normal" required>Normal<br>
+          <input type="radio" id="st" name="restingecg" value="st"> ST <br>
+          <input type="radio" id="lvh" name="restingecg" value="lvh" > LVH <br>
+      </div>
+
+        <div class="numbers">
+        <label for="maxhr"><strong>Maximum Heart Rate</strong></label> <br>
+        <input type="number" id="maxhr" min="60" max="210" placeholder="in BPM"  name="maxhr" required> <br>
+        </div>
+
+        <div class="container">
+        <label for="exerciseangina"> <strong>Exercise Angina</strong></label> <br>
+        <input type="radio" id="yes" name="exerciseangina" value="yes" required > Yes<br>
+        <input type="radio" id="no" name="exerciseangina" value="no"> No<br>
+      </div>
+
+        <div class="numbers">
+        <label for="oldpeak"> <strong>Oldpeak</strong></label> <br>
+        <input type="number" id="oldpeak" min="-2.6" max="6.2" step="0.01" placeholder="ST depression in mV" name="oldpeak" required> <br>
+        </div>
+
+        <div class="container" >
+          <label for="st_slope"> <strong>ST Slope</strong></label> <br>
+          <input type="radio" id="up" name="st_slope" value="up" required>Up<br>
+          <input type="radio" id="flat" name="st_slope" value="flat"> Flat <br>
+          <input type="radio" id="down" name="st_slope" value="down"> Down <br>
+      </div>
+
+
+
+      </div>
+      <div style="text-align: center; margin-top: 1rem; margin-bottom: 0.5rem;">
+      <button id="output" form="form1" type="submit"><strong>Check Provisional Diagnosis</strong></button>
+      </div>
+    </form>
+    <div>
+  
+    </div>
+
+    
+</body>
+</html> 
