@@ -2,6 +2,10 @@ import pandas as pd
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split 
 from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+from sklearn.linear_model import LinearRegression
 
 df=pd.read_csv('heart.csv')
 
@@ -27,6 +31,10 @@ numerical = ['age','resting_bp','cholesterol','max_hr','oldpeak']
 categorical = ['sex','chest_pain','fasting_bs','resting_ecg','st_slope','exercise_angina']
 
 df_data=df
+lr = LinearRegression()
+imp = IterativeImputer(estimator=lr,missing_values=0, max_iter=10, verbose=2, imputation_order='roman',random_state=0)
+df2=imp.fit_transform(df.loc[:,['cholesterol']])
+df['cholesterol']=df2
 
 
 y=df_data.heart_disease
