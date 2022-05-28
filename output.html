@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+
+<style>
+   * {
+      margin: 0;
+      padding: 0;
+   }
+   .container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+   }
+
+   .result{
+      width: 35%;
+      margin: 0 auto;
+      border: 2px solid #000000;
+      border-radius: 10px;
+      padding: 1rem 3rem 2rem 2rem;
+   }
+</style>
+
+</head>
+
+
+   <body>
+      <div class="container">
+         <div class="result">
+            {% if heart_disease %} 
+               <h1> Does the patient have a heart disease ? </h1>
+               <h2> Provisional Diagnosis: a case of heart failure </h2>
+            {% else %}
+               <h1> Does the patient have a heart disease ? </h1>
+               <h2> Patient does not suffer from a cardiac disease</h2>
+            {% endif %}
+         </div>
+      </div>
+   </body>
+</html>
