@@ -15,9 +15,9 @@ def output():
         age=int(request.form['age'])
         #gender male=1 female=0
         gender=request.form['gender']
-        if gender.lower()=='male':
+        if gender=='male':
             gender=1
-        elif gender.lower()=='female':
+        elif gender=='female':
             gender=0
         #chestpain asy = 0 ata = 1 nap = 2 ta = 3 
         chestpain=request.form['chestpain']
@@ -51,7 +51,7 @@ def output():
         maxhr=int(request.form['maxhr'])
         #exerciseangina
         exerciseangina=request.form['exerciseangina']
-        if exerciseangina.lower()=='yes':
+        if exerciseangina=='yes':
             exerciseangina=1
         else:
             exerciseangina=0
